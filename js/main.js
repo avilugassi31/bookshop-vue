@@ -1,44 +1,18 @@
 
-
-import bookApp from './pages/book-app.cmp.js'
-
+import { myRouter } from './routes.js';
+import appHeader from './cmps/header.cmp.js';
 const options = {
     el: '#app',
+    router: myRouter,
     template: `<section> 
-        <book-app />
+        <app-header></app-header>
+        <router-view/>
+        
          </section>`,
-         
-    components: {bookApp}
-    
-}
 
-new Vue(options)
+    components: {
+        appHeader,
+    },
+};
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+new Vue(options);

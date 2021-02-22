@@ -9,23 +9,30 @@ export default {
        
             <book-filter @filtered="setFilter"/>
             <book-details v-if="selectedBook" :book="selectedBook" @close="selectedBook = null" /> 
-            <book-list v-else @selected="selectBook" @removeBook="removeBook" :books="booksToShow"/> 
+            <book-list  @selected="selectBook" @removeBook="removeBook" :books="booksToShow"/> 
            
         </section>
     `,
     data() {
         return {
-            books: bookService.getBooks(),
+            books: [],
             filterBy: null,
             selectedBook: null,
         };
     },
     methods: {
+        loadBooks() {
+            bookService.query()
+                .then(books => this.books = books)
+                
+        },
         setFilter(filterBy) {
             this.filterBy = filterBy;
         },
         removeBook(id) {
-            bookService.remove(id);
+            console.log('id:', id)
+            bookService.remove(id)
+            .then(this.loadBooks)
         },
         selectBook(book) {
             this.selectedBook = book;
@@ -61,5 +68,7 @@ export default {
         bookList,
         bookDetails,
     },
-    created() {},
+    created() {
+        this.loadBooks();
+    },
 };

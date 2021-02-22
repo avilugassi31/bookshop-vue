@@ -1,20 +1,25 @@
 import longText from '../cmps/long-text.cmp.js';
+import bookReview from '../cmps/book-review.cmp.js';
+import { bookService } from '../services/book-service.js';
 
 export default {
-    props: ['book'],
-    template: ` <section class="modal-details">
+    template: ` <section v-if="book" class="modal-details">
+        <div class="book-details">
         <h2> {{book.authors[0]}} </h2>
         <h3 :class="toggleColor" >Price: {{book.listPrice.amount}}{{book.listPrice.currencyCode}} </h3>
         <h4>Page Count: {{pageCount}}</h4>
         <h5>Publish Date: {{publishDate}}</h5>
         <h6 v-if="isOnSale">For Sale: You Can Buy It!!!</h6>
         <long-text  :description="book.description"/>
-        <button @click="$emit('close')" class="modal-btn">X</button>
+        </div>
+        <book-review :book="book"/>
+        <router-link to="/book">Back To Book List</router-link>
     </section>    
     `,
     data() {
         return {
             currYear: new Date().getFullYear(),
+            book: null,
         };
     },
     methods: {},
@@ -41,5 +46,11 @@ export default {
     },
     components: {
         longText,
+        bookReview,
+    },
+    created() {
+        const id = this.$route.params.bookId;
+        console.log('id:', id);
+        bookService.getById(id).then((book) => (this.book = book));
     },
 };
