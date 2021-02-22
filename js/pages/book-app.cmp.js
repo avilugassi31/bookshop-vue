@@ -8,8 +8,9 @@ export default {
         <section class="book-app">
        
             <book-filter @filtered="setFilter"/>
-            <book-list @selected="selectBook" @removeBook="removeBook" :books="booksToShow"/> 
             <book-details v-if="selectedBook" :book="selectedBook" @close="selectedBook = null" /> 
+            <book-list v-else @selected="selectBook" @removeBook="removeBook" :books="booksToShow"/> 
+           
         </section>
     `,
     data() {

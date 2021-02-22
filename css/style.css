@@ -97,11 +97,11 @@ img{
 /* BOOK DETAILS */
 
 .modal-details{
-    /* position:absolute; */
+   height: 100vh;
     width: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
     border:2px solid white;
     background-color:wheat;
