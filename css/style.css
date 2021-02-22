@@ -3,15 +3,19 @@
 }
 
 body {
-    background-color: rgb(31, 30, 30);
     margin: 0 auto;
+    background-image: url(../img/book2.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
 }
 button {
     cursor: pointer;
 }
 
 h1 {
-    color: antiquewhite;
+    color: rgb(39, 75, 45);
     font-family: cursive;
     font-weight: bolder;
     text-decoration: underline;
@@ -35,6 +39,23 @@ p {
     height: 100%;
     width: 100%;
     margin: 0 auto;
+    /* background-color: black; */
+    background-image: none;
+}
+
+/* HEADER */
+.app-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    background-color: rgba(206, 233, 211, 0.9);
+}
+.logo {
+    margin-inline-start: 40px;
+}
+nav {
+    margin-inline-end: 40px;
 }
 /* BOOK FILTER */
 
@@ -55,12 +76,16 @@ p {
     border: 1px solid black;
     font-weight: bold;
 }
+
+/* HOME PAGE */
+
 /* BOOK CONTAINER */
 
 .book-list-container {
     margin-right: 40px;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+    /* background-image: none; */
 }
 
 .book-list {
@@ -110,8 +135,31 @@ img {
 .book-details {
     display: flex;
     flex-direction: column;
+    width:50%;
 }
 .book-review {
+    width:100%;
+    height:100%;
     display: flex;
     flex-direction: column;
+    border: 1px solid black;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* USER - MSG */
+.user-msg {
+    position: absolute;
+    padding: 10px;
+    top: 0;
+    right: 0;
+    transition: all 0.5s;
+}
+
+.success {
+    background-color: rgb(30, 207, 30);
+}
+
+.error {
+    background-color: red;
 }

@@ -385,15 +385,19 @@ var gBooks = [
 ];
 
 function query() {
-    getBooks();
-    return storageService.query(BOOKS_KEY);
+    return getBooks();
+    
 }
 
 function getBooks() {
-    if (!utilService.loadFromStorage(BOOKS_KEY)) {
-        utilService.saveToStorage(BOOKS_KEY, gBooks);
-    }
-    return gBooks;
+    return storageService.query(BOOKS_KEY).then((books) => {
+        console.log('book0:', books[0]);
+        if (!books || !books.length) {
+            gBooks.forEach((book) => (book.reviews = []));
+            return storageService.postMany(BOOKS_KEY, gBooks);
+        }
+        return books;
+    });
 }
 
 function remove(bookId) {
@@ -413,16 +417,9 @@ function save(book) {
 }
 
 function addReview(bookId, review) {
-    getById(bookId).then((book) => {
-        const idx = gBooks.findIndex((currBook) => {
-            return currBook.id === bookId;
-        });
-        if (!book.reviews) {
-            book.reviews = [review];
-        } else {
-            book.reviews.push(review);
-        }
-        gBooks.splice(idx, 1, book);
-        utilService.saveToStorage(BOOKS_KEY, gBooks);
+    return getById(bookId).then((book) => {
+        console.log('book433:', book);
+        book.reviews.push(review);
+        return storageService.put(BOOKS_KEY, book)
     });
 }

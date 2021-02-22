@@ -1,7 +1,7 @@
 export default {
     template: `
         <section class="book-filter">
-        <h1>Books Shop</h1>
+       
         <form @submit.prevent="setFilter">
             <input type="text"  v-model="filterBy.byTitle" placeholder="Search By Name"/>
             <input type="number"  v-model.number="filterBy.byPrice" placeholder="Search By Price" />

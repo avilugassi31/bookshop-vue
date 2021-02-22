@@ -1,6 +1,7 @@
 import longText from '../cmps/long-text.cmp.js';
 import bookReview from '../cmps/book-review.cmp.js';
 import { bookService } from '../services/book-service.js';
+import { eventBus } from '../services/event-bus-service.js';
 
 export default {
     template: ` <section v-if="book" class="modal-details">
@@ -11,9 +12,9 @@ export default {
         <h5>Publish Date: {{publishDate}}</h5>
         <h6 v-if="isOnSale">For Sale: You Can Buy It!!!</h6>
         <long-text  :description="book.description"/>
-        </div>
-        <book-review :book="book"/>
         <router-link to="/book">Back To Book List</router-link>
+        </div>
+        <book-review :reviews="book.reviews" @review="addReview" @removeReview="removeReview"/>
     </section>    
     `,
     data() {
@@ -22,7 +23,44 @@ export default {
             book: null,
         };
     },
-    methods: {},
+    methods: {
+        addReview(review) {
+            this.book.reviews.push(review);
+
+            bookService
+                .save(this.book)
+                .then((book) => {
+                    this.book = book;
+                })
+                .then((book) => {
+                    const msg = {
+                        txt: 'Review saved succesfully',
+                        type: 'success',
+                    };
+                    eventBus.$emit('show-msg', msg);
+                }).catch(err=>{
+                    console.log(err);
+                    const msg = {
+                        txt: err.message,
+                        type: 'error'
+                    }
+                    eventBus.$emit('show-msg', msg)
+                })
+            this.$router.push('/book')
+        },
+        removeReview(id) {
+            console.log('id:', id);
+
+            console.log('book:', this.book);
+            this.book.reviews = this.book.reviews.filter((review) => {
+                console.log('review:', review);
+                return review.id !== id;
+            });
+            bookService.save(this.book).then((book) => {
+                this.book = book;
+            });
+        },
+    },
     computed: {
         pageCount() {
             if (this.book.pageCount > 500) return 'Long';
@@ -50,7 +88,7 @@ export default {
     },
     created() {
         const id = this.$route.params.bookId;
-        console.log('id:', id);
+        // console.log('id:', id);
         bookService.getById(id).then((book) => (this.book = book));
     },
 };
