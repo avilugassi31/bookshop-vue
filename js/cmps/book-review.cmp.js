@@ -1,7 +1,6 @@
 import { bookService } from '../services/book-service.js';
 import { utilService } from '../services/util.service.js';
 
-
 export default {
     props: ['reviews'],
     template: ` <section>
@@ -15,12 +14,22 @@ export default {
 <textarea placeholder="Write What You Think" maxlength="50" v-model="review.comment"></textarea>
 <button>Submit</button>
 </form>
-<ul class="review-list"> 
-    <li v-for="review in reviews"><h2>name: {{review.bookReader}}</h2><h3>rate: {{review.rate}}
-</h3><h3>read at: {{review.readAt}}</h3><p>comment: {{review.comment}}</p>
-<button @click="removeReview(review.id)">X</button>
-</li>
-</ul>
+<div class="reviews-section">
+<table class="review-list">
+    <thead><th>Name</th>
+    <th>Rate</th>
+    <th>Read Date</th>
+    <th>Remove Review</th>
+</thead>
+    <tbody>
+    <tr v-for="review in reviews">
+        <td> {{review.bookReader}}</td>
+    <td> {{review.rate}}</td><td> {{review.readAt}}</td>
+<td><button @click="removeReview(review.id)">X</button></td>
+</tr>
+<!-- <tr><p>comment: {{review.comment}}</p></tr> -->
+</tbody></table>
+</div>
 </section>      
     `,
     data() {

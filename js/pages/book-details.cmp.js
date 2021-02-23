@@ -4,15 +4,21 @@ import { bookService } from '../services/book-service.js';
 import { eventBus } from '../services/event-bus-service.js';
 
 export default {
-    template: ` <section v-if="book" class="modal-details">
+    template: ` 
+   
+    <section v-if="book" class="modal-details">
         <div class="book-details">
-        <h2> {{book.authors[0]}} </h2>
-        <h3 :class="toggleColor" >Price: {{book.listPrice.amount}}{{book.listPrice.currencyCode}} </h3>
-        <h4>Page Count: {{pageCount}}</h4>
-        <h5>Publish Date: {{publishDate}}</h5>
-        <h6 v-if="isOnSale">For Sale: You Can Buy It!!!</h6>
+        <table><thead><th>Book Image</th><th>Author</th><th>price</th><th>Page Count</th><th>Publish Date</th><th>For Sale</th></thead>
+        <tbody><tr>
+            <td><img :src="book.thumbnail" class="table-img"></td>
+            <td>{{book.authors[0]}}</td>
+        <td :class="toggleColor" > {{book.listPrice.amount}}{{book.listPrice.currencyCode}}</td>
+        <td>{{pageCount}}</td>
+        <td>{{publishDate}}</td>
+        <td v-if="isOnSale">For Sale: You Can Buy It!!!</td>
+        </tr></tbody></table>
         <long-text  :description="book.description"/>
-        <router-link to="/book">Back To Book List</router-link>
+        <router-link to="/book" class="back">Back To Book List</router-link>
         </div>
         <book-review :reviews="book.reviews" @review="addReview" @removeReview="removeReview"/>
     </section>    
