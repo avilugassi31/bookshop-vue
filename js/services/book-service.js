@@ -10,6 +10,9 @@ export const bookService = {
     getById,
     save,
     addReview,
+    ask,
+    addGoogleBook,
+    getNextBookId,
 };
 
 var gBooks = [
@@ -386,12 +389,10 @@ var gBooks = [
 
 function query() {
     return getBooks();
-    
 }
 
 function getBooks() {
     return storageService.query(BOOKS_KEY).then((books) => {
-        console.log('book0:', books[0]);
         if (!books || !books.length) {
             gBooks.forEach((book) => (book.reviews = []));
             return storageService.postMany(BOOKS_KEY, gBooks);
@@ -420,6 +421,49 @@ function addReview(bookId, review) {
     return getById(bookId).then((book) => {
         console.log('book433:', book);
         book.reviews.push(review);
-        return storageService.put(BOOKS_KEY, book)
+        return storageService.put(BOOKS_KEY, book);
     });
+}
+
+function ask(x) {
+    return axios
+        .get(x)
+        .then((res) => {
+            // console.log('Service Got Res:', res);
+            return res.data;
+        })
+        .catch((err) => {
+            console.log('Service got Error:', err);
+        });
+}
+
+function addGoogleBook(googleBook) {
+    const newBook = {
+        id: googleBook.id,
+        title: googleBook.volumeInfo.title,
+        subtitle: googleBook.searchInfo.textSnippet,
+        authors: googleBook.volumeInfo.authors[0],
+        publishedDate: googleBook.volumeInfo.publishedDate,
+        description: googleBook.volumeInfo.description,
+        pageCount: googleBook.volumeInfo.pageCount,
+        categories: googleBook.volumeInfo.categories[0],
+        thumbnail: googleBook.volumeInfo.imageLinks.thumbnail,
+        language: googleBook.volumeInfo.language,
+        listPrice: {
+            amount: 20,
+            currencyCode: googleBook.saleInfo.country,
+            isOnSale: utilService.randomBool(),
+        },
+    };
+    // gBooks.push(newBook)
+    return storageService.post(BOOKS_KEY, newBook);
+}
+
+function getNextBookId(bookId) {
+    const books = gBooks;
+    var bookIdx = books.findIndex((book) => {
+        return book.id === bookId;
+    });
+    const nextBookIdx = bookIdx + 1;
+    return books[nextBookIdx].id;
 }

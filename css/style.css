@@ -77,6 +77,22 @@ nav {
     font-weight: bold;
 }
 
+
+/* BOOK ADD */
+
+.book-add {
+    display: flex;
+    align-items: center;
+    margin:auto;
+    text-align: center;
+    
+}
+
+.book-add-list {
+    background-color: white;
+}
+
+
 /* HOME PAGE */
 
 /* BOOK CONTAINER */

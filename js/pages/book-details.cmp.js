@@ -21,12 +21,15 @@ export default {
         <router-link to="/book" class="back">Back To Book List</router-link>
         </div>
         <book-review :reviews="book.reviews" @review="addReview" @removeReview="removeReview"/>
+        <router-link to="/book">Back</router-link>
+        <router-link :to="nextBookLink">Next Book</router-link>
     </section>    
     `,
     data() {
         return {
             currYear: new Date().getFullYear(),
             book: null,
+            nextBookId: '',
         };
     },
     methods: {
@@ -44,15 +47,16 @@ export default {
                         type: 'success',
                     };
                     eventBus.$emit('show-msg', msg);
-                }).catch(err=>{
+                })
+                .catch((err) => {
                     console.log(err);
                     const msg = {
                         txt: err.message,
-                        type: 'error'
-                    }
-                    eventBus.$emit('show-msg', msg)
-                })
-            this.$router.push('/book')
+                        type: 'error',
+                    };
+                    eventBus.$emit('show-msg', msg);
+                });
+            this.$router.push('/book');
         },
         removeReview(id) {
             console.log('id:', id);
@@ -65,6 +69,14 @@ export default {
             bookService.save(this.book).then((book) => {
                 this.book = book;
             });
+        },
+        loadBook() {
+            const id = this.$route.params.bookId;
+            bookService.getById(id).then((book) => {
+                this.book = book;
+                this.nextBookId = bookService.getNextBookId(this.book.id);
+            });
+            // this.nextBookLink();
         },
     },
     computed: {
@@ -87,6 +99,11 @@ export default {
         isOnSale() {
             return this.book.listPrice.isOnSale;
         },
+        nextBookLink() {
+            const nextId = bookService.getNextBookId(this.book.id);
+            console.log('nextId:', nextId);
+            return '/book/' + nextId;
+        },
     },
     components: {
         longText,
@@ -96,5 +113,10 @@ export default {
         const id = this.$route.params.bookId;
         // console.log('id:', id);
         bookService.getById(id).then((book) => (this.book = book));
+    },
+    watch: {
+        '$route.params.bookId'(id) {
+            this.loadBook();
+        },
     },
 };

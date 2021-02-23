@@ -19,12 +19,13 @@ export default {
     <thead><th>Name</th>
     <th>Rate</th>
     <th>Read Date</th>
+    <th>Comment</th>
     <th>Remove Review</th>
 </thead>
     <tbody>
     <tr v-for="review in reviews">
         <td> {{review.bookReader}}</td>
-    <td> {{review.rate}}</td><td> {{review.readAt}}</td>
+    <td> {{review.rate}}</td><td> {{review.readAt}}</td> <td>{{review.comment}}</td>
 <td><button @click="removeReview(review.id)">X</button></td>
 </tr>
 <!-- <tr><p>comment: {{review.comment}}</p></tr> -->

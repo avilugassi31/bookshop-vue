@@ -2,12 +2,16 @@ import { bookService } from '../services/book-service.js';
 import bookFilter from '../cmps/book-filter.cmp.js';
 import bookList from '../cmps/book-list.cmp.js';
 import bookDetails from '../pages/book-details.cmp.js';
+import bookAdd from '../cmps/book-add.cmp.js'
+import { eventBus } from '../services/event-bus-service.js';
+ 
 
 export default {
     template: `
         <section class="book-app">
-       
+
             <book-filter @filtered="setFilter"/>
+            <book-add @addbook="addBook"/> 
             <book-details v-if="selectedBook" :book="selectedBook" @close="selectedBook = null" /> 
             <book-list  @selected="selectBook" @removeBook="removeBook" :books="booksToShow"/> 
            
@@ -38,6 +42,28 @@ export default {
             this.selectedBook = book;
             console.log(book);
         },
+        addBook(newBook){
+            this.books.push(newBook);
+            bookService.save(newBook)
+                
+                .then((book) => {
+                    const msg = {
+                        txt: 'Book saved succesfully',
+                        type: 'success',
+                    };
+                    eventBus.$emit('show-msg', msg);
+                }).catch(err=>{
+                    console.log(err);
+                    const msg = {
+                        txt: err.message,
+                        type: 'error'
+                    }
+                    eventBus.$emit('show-msg', msg)
+                })
+            
+
+
+        }
     },
     computed: {
         booksToShow() {
@@ -67,6 +93,7 @@ export default {
         bookFilter,
         bookList,
         bookDetails,
+        bookAdd
     },
     created() {
         this.loadBooks();
