@@ -170,6 +170,11 @@ td{
     flex-direction: column;
     width:50%;
 }
+.details-btn{
+    display: flex;
+    
+    
+}
 .book-review {
     width:300px;
     height:300px;
@@ -206,6 +211,7 @@ a{
     background-color:lightgrey;
     color:black;
     box-shadow:2px 2px 2px rgb(192, 95, 95);
+    margin-right:5px;
     
 }
 
@@ -227,4 +233,27 @@ a{
 
 .error {
     background-color: red;
+}
+
+
+/* ABOUT */
+
+.about-title{
+    color:white;
+    font-family:cursive;
+    font-weight: bolder;
+    text-transform:capitalize;
+    text-shadow: 2px 2px 2px lightblue;
+    font-size:2rem;
+    text-align: center;
+}
+
+.about-description{
+    color:white;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: bolder;
+    font-size:1.2rem;
+    column-count:1;
+    line-height:30px;
+    text-align: center;
 }

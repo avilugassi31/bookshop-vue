@@ -18,11 +18,14 @@ export default {
         <td v-if="isOnSale">For Sale: You Can Buy It!!!</td>
         </tr></tbody></table>
         <long-text  :description="book.description"/>
+        <div class ="details-btn">
+        <router-link :to="nextBookLink" class="back">Next Book</router-link>
         <router-link to="/book" class="back">Back To Book List</router-link>
+</div>
         </div>
         <book-review :reviews="book.reviews" @review="addReview" @removeReview="removeReview"/>
-        <router-link to="/book">Back</router-link>
-        <router-link :to="nextBookLink">Next Book</router-link>
+        <!-- <router-link to="/book">Back</router-link> -->
+      
     </section>    
     `,
     data() {
@@ -76,7 +79,6 @@ export default {
                 this.book = book;
                 this.nextBookId = bookService.getNextBookId(this.book.id);
             });
-            
         },
     },
     computed: {

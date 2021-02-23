@@ -464,6 +464,7 @@ function getNextBookId(bookId) {
     var bookIdx = books.findIndex((book) => {
         return book.id === bookId;
     });
-    const nextBookIdx = bookIdx + 1;
+    var nextBookIdx = bookIdx + 1;
+    if (nextBookIdx === books.length) nextBookIdx = 0;
     return books[nextBookIdx].id;
 }

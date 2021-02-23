@@ -1,5 +1,4 @@
-import {bookService} from '../services/book-service.js'
-
+import { bookService } from '../services/book-service.js';
 
 export default {
     template: `
@@ -13,28 +12,28 @@ export default {
     data() {
         return {
             term: '',
-            books: []
-        }
+            books: [],
+        };
     },
 
     methods: {
         searchBook() {
-            const newBook = bookService.ask(`https://www.googleapis.com/books/v1/volumes?printType=books&q=${this.term}`)
-            .then(res => {
-                res.items.map(book => {
-                    this.books.push(book)
-                })
-            })
+            const newBook = bookService
+                .ask(
+                    `https://www.googleapis.com/books/v1/volumes?printType=books&q=${this.term}`
+                )
+                .then((res) => {
+                    this.books = res.items;
+                });
         },
         addBook(book) {
-            bookService.addGoogleBook(book)
-                .then(book => {
-                    this.$emit('addbook',book)
-                })
-
-        }
+            bookService.addGoogleBook(book).then((book) => {
+                this.$emit('addbook', book)
+                this.books = [];
+            });
+        },
     },
     computed: {},
     components: {},
-    created() { },
+    created() {},
 };
