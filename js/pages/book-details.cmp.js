@@ -76,7 +76,7 @@ export default {
                 this.book = book;
                 this.nextBookId = bookService.getNextBookId(this.book.id);
             });
-            // this.nextBookLink();
+            
         },
     },
     computed: {
@@ -115,7 +115,7 @@ export default {
         bookService.getById(id).then((book) => (this.book = book));
     },
     watch: {
-        '$route.params.bookId'(id) {
+        '$route.params.bookId'() {
             this.loadBook();
         },
     },
