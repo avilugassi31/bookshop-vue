@@ -8,11 +8,18 @@ import noteTodo from '../cmps/note-todo.cmp.js';
 export default {
     template: `
         <section class="keep-app">
-<!-- <keep-header @filtered="setFilter"/> -->
-<note-txt :note="notesTextToShow" />
-<note-todo :noteTodo="notesTodoToShow"/>
-<note-img :noteImg="notesImgToShow" />
-<note-video :noteVideo="notesVideoToShow"/>
+            <div class="edit-tools">
+            <input type="text" v-model="newNoteTxt.info.txt" placeholder="Add Text Note">
+            <button @click.prevent="addNote">Add Text Note</button>
+            <button>Add img</button>
+            <button>Add video</button>
+            <button>Add todo</button>
+        </div>
+    <!-- <keep-header @filtered="setFilter"/> -->
+    <note-txt :note="notesTextToShow" />
+    <note-todo :noteTodo="notesTodoToShow"/>
+    <note-img :noteImg="notesImgToShow" />
+    <note-video :noteVideo="notesVideoToShow"/>
 
 
             
@@ -22,12 +29,22 @@ export default {
     data() {
         return {
             filterBy: null,
-            notes: {
-                noteTxt: null,
+            notes: null,
+            newNoteTxt: {
+                type: 'NoteTxt',
+                isPinned: true,
+                info: {
+                    txt: '',
+                },
             },
         };
     },
-    methods: {},
+    methods: {
+        addNote() {
+            this.notes.push(this.newNoteTxt)
+
+        },
+    },
     computed: {
         setFilter(filterBy) {
             this.filterBy = filterBy;

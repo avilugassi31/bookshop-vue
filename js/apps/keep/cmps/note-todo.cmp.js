@@ -2,7 +2,9 @@ export default {
     props: ['noteTodo'],
     template: ` <section class="notes-todo">    
       <ul><h2 v-for="title in noteTodo">{{title.info.label}}</h2>
-    <li v-for="list in listTodos">{{list.txt}}</li>
+    <li v-for="list in listTodos">{{list.txt}}
+        <button>X</button>
+    </li>
     
     
     </ul>
