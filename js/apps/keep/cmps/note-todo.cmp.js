@@ -1,8 +1,8 @@
 export default {
     props: ['noteTodo'],
     template: ` <section class="notes-todo">    
-      <ul><h2 v-for="title in noteTodo">{{title.info.label}}</h2>
-    <li v-for="list in listTodos">{{list.txt}}
+      <ul>
+    <li v-for="note in noteTodo">{{note.txt}}
         <button>X</button>
     </li>
     
@@ -14,13 +14,13 @@ export default {
     `,
     data() {
         return {
-            listTodos: this.noteTodo[0].info.todos,
+            // listTodos: this.noteTodo[0].info.todos,
            
         };
     },
     methods: {},
     computed: {},
     created() {
-        console.log('this.listodos', this.listTodos);
+        console.log('this.listodos', this.noteTodo);
     },
 };
