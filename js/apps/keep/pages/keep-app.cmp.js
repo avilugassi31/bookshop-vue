@@ -6,6 +6,7 @@ import noteImg from '../cmps/note-img.cmp.js';
 import noteVideo from '../cmps/note-video.cmp.js';
 import noteTodo from '../cmps/note-todo.cmp.js';
 import addNote from '../pages/add-note.cmp.js';
+import { storageService } from '../services/async-storage-service.js';
 
 export default {
     template: `
@@ -20,9 +21,9 @@ export default {
         </div>
     <!-- <keep-header @filtered="setFilter"/> -->
     <!-- <add-note @noteAdd="addNote" :noteAdd="noteAdd"/> -->
-     <note-txt  v-if="notes" :note="notesTextToShow" @removeTxtNote="removeTextNote" /> 
-    <note-todo v-if="notes" :noteTodo="notesTodoToShow"/>
-    <note-img  v-if="notes" :noteImg="notesImgToShow" />
+     <note-txt  v-if="notes" :note="notesTextToShow" @removeTxtNote="removeTextNote" @color="setColor"/> 
+    <note-todo v-if="notes" :noteTodo="notesTodoToShow" @removeTodo="removeTodoNote"/>
+    <note-img  v-if="notes" :noteImg="notesImgToShow" @removeImgNote="removeImgNote" />
     <!-- <note-video :noteVideo="notesVideoToShow"/>        -->
         </section>
     `,
@@ -36,14 +37,14 @@ export default {
                 isPinned: true,
                 info: {
                     txt: '',
+                    color: '',
                 },
             },
             newNoteTodo: {
                 type: 'NoteTodos',
-                id: utilService.makeId(),
                 info: {
                     label: 'What To Do:',
-                    todos: [{ txt:'', doneAt: null }],
+                    todos: [{ txt:'', doneAt: null, id: utilService.makeId() }],
                 },
             },
             newNoteImg: {
@@ -85,6 +86,7 @@ export default {
         },
         addNoteTodo() {
             this.notes.push(this.newNoteTodo);
+            keepService.save(this.newNoteTodo)
         },
         addNoteVideo() {
             this.notes.push(this.newNoteVideo);
@@ -93,6 +95,19 @@ export default {
             // console.log('id:', id);
             keepService.remove(id).then(this.loadKeeps);
         },
+        removeImgNote(id) {
+            // console.log('id:', id);
+            keepService.remove(id).then(this.loadKeeps);
+        },
+        removeTodoNote(id) {
+            console.log(this.notes)
+            keepService.remove(id).then(this.loadKeeps);
+            console.log('after',this.notes)
+        },
+        setColor(color) {
+            console.log('color',color)
+            this.newNoteTxt.info.color = color
+        }
     },
     computed: {
         // setFilter(filterBy) {
@@ -124,7 +139,6 @@ export default {
                 
                 return note.type === 'NoteTodos';
             });
-            console.log('noteTodo:', noteTodo)
             return noteTodo[0].info.todos;
         },
     },

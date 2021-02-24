@@ -3,7 +3,7 @@ export default {
     template: ` <section class="notes-todo">    
       <ul>
     <li v-for="note in noteTodo">{{note.txt}}
-        <button>X</button>
+        <button @click.stop="removeTodo(note.id)">X</button>
     </li>
     
     
@@ -18,7 +18,12 @@ export default {
            
         };
     },
-    methods: {},
+    methods: {
+        removeTodo(id) {
+            console.log(id);
+            this.$emit('removeTodo', id)
+        }
+    },
     computed: {},
     created() {
         console.log('this.listodos', this.noteTodo);

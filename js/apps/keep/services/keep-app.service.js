@@ -55,12 +55,11 @@ var gNotes = [
     },
     {
         type: 'NoteTodos',
-        id: utilService.makeId(),
         info: {
             label: 'What To Do:',
             todos: [
-                { txt: 'Do that', doneAt: null },
-                { txt: 'Do this', doneAt: 187111111 },
+                { txt: 'Do that', doneAt: null, id: utilService.makeId() },
+                { txt: 'Do this', doneAt: 187111111 , id: utilService.makeId()},
             ],
         },
     },
@@ -99,19 +98,19 @@ function remove(noteId) {
     return storageService.remove(NOTES_KEY, noteId);
 }
 function getById(id) {
-    return storageService.get(BOOKS_KEY, id);
+    return storageService.get(NOTES_KEY, id);
 }
 
-function save(book) {
-    if (book.id) {
-        return storageService.put(BOOKS_KEY, book);
+function save(note) {
+    if (note.id) {
+        return storageService.put(NOTES_KEY, note);
     } else {
-        return storageService.post(BOOKS_KEY, book);
+        return storageService.post(NOTES_KEY, note);
     }
 }
 
-function addReview(bookId, review) {
-    return getById(bookId).then((book) => {
+function addReview(noteId, review) {
+    return getById(noteId).then((book) => {
         console.log('book433:', book);
         book.reviews.push(review);
         return storageService.put(BOOKS_KEY, book);
