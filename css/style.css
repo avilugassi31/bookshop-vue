@@ -4,11 +4,6 @@
 
 body {
     margin: 0 auto;
-    background-image: url(../img/book2.jpg);
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: cover;
-    background-position: center;
 }
 button {
     cursor: pointer;
@@ -43,7 +38,7 @@ p {
     background-image: none;
 }
 
-/* HEADER */
+/*HOME- HEADER */
 .app-header {
     display: flex;
     justify-content: space-between;
@@ -57,6 +52,71 @@ p {
 nav {
     margin-inline-end: 40px;
 }
+/* HOME-APSUS */
+
+.main-apsus {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(90, 34, 34);
+}
+
+.book-apsus {
+    width: 300px;
+    height: 300px;
+    border: 1px solid black;
+    background-color: #fff;
+}
+
+/* .about-apsus {
+    width: 300px;
+    height: 300px;
+    border: 1px solid black;
+    background-color: #fff;
+} */
+
+/* KEEP-HEADER */
+
+.keep-header {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* NOTES */
+/* NOTES_TXT */
+.keep-app {
+    margin-top: 10px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+}
+.notes-txt p {
+    font-family: cursive;
+    height: 200px;
+    width: 200px;
+    border: 1px solid black;
+    text-align: center;
+}
+
+/* NOTES TODO */
+.notes-todo {
+    font-family: cursive;
+    height: 200px;
+    width: 200px;
+    border: 1px solid black;
+    text-align: center;
+}
+/* NOTES IMG */
+/* .notes-img {
+    font-family: cursive;
+    height: 200px;
+    width: 200px;
+    border: 1px solid black;
+    text-align: center;
+} */
+
+
 /* BOOK FILTER */
 
 .book-filter {
@@ -77,21 +137,18 @@ nav {
     font-weight: bold;
 }
 
-
 /* BOOK ADD */
 
 .book-add {
     display: flex;
     align-items: center;
-    margin:auto;
+    margin: auto;
     text-align: center;
-    
 }
 
 .book-add-list {
     background-color: white;
 }
-
 
 /* HOME PAGE */
 
@@ -136,28 +193,28 @@ img {
     height: 100vh;
     width: 100%;
     display: flex;
-    justify-content:space-around;
+    justify-content: space-around;
     border: 2px solid white;
     background-color: wheat;
 }
 
-table{
+table {
     margin-top: 10px;
-    border:1px solid black;
-    font-family: cursive; 
-    table-layout: fixed;                          ;
+    border: 1px solid black;
+    font-family: cursive;
+    table-layout: fixed;
 }
-th{
-    border:1px solid black;
+th {
+    border: 1px solid black;
 }
-td{
-    border:1px solid black;
+td {
+    border: 1px solid black;
     text-align: center;
     table-layout: fixed;
 }
-.table-img{
-    width:50px;
-    height:50px;
+.table-img {
+    width: 50px;
+    height: 50px;
 }
 .red {
     color: red;
@@ -168,55 +225,50 @@ td{
 .book-details {
     display: flex;
     flex-direction: column;
-    width:50%;
+    width: 50%;
 }
-.details-btn{
+.details-btn {
     display: flex;
-    
-    
 }
 .book-review {
-    width:300px;
-    height:300px;
+    width: 300px;
+    height: 300px;
     margin-top: 10px;
     display: flex;
     flex-direction: column;
     border: 1px solid black;
     justify-content: space-between;
     align-items: center;
-    font-family:cursive;
+    font-family: cursive;
     text-decoration: bolder;
 }
-.reviews-section{
+.reviews-section {
     text-align: center;
-    display:flex;
+    display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     /* margin-right:100px; */
 }
-.review-list{
-    table-layout:fixed;
+.review-list {
+    table-layout: fixed;
 }
-a{
+a {
     text-decoration: none;
 }
-.back{
-    border:1px solid black;
-    width:30%;
-    text-align:center;
-    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    font-weight:bold;
-    padding:10px;
-    background-color:lightgrey;
-    color:black;
-    box-shadow:2px 2px 2px rgb(192, 95, 95);
-    margin-right:5px;
-    
+.back {
+    border: 1px solid black;
+    width: 30%;
+    text-align: center;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
+        'Lucida Sans', Arial, sans-serif;
+    font-weight: bold;
+    padding: 10px;
+    background-color: lightgrey;
+    color: black;
+    box-shadow: 2px 2px 2px rgb(192, 95, 95);
+    margin-right: 5px;
 }
-
-
-
 
 /* USER - MSG */
 .user-msg {
@@ -235,25 +287,25 @@ a{
     background-color: red;
 }
 
-
 /* ABOUT */
 
-.about-title{
-    color:white;
-    font-family:cursive;
+.about-title {
+    color: white;
+    font-family: cursive;
     font-weight: bolder;
-    text-transform:capitalize;
+    text-transform: capitalize;
     text-shadow: 2px 2px 2px lightblue;
-    font-size:2rem;
+    font-size: 2rem;
     text-align: center;
 }
 
-.about-description{
-    color:white;
-    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+.about-description {
+    color: white;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS',
+        sans-serif;
     font-weight: bolder;
-    font-size:1.2rem;
-    column-count:1;
-    line-height:30px;
+    font-size: 1.2rem;
+    column-count: 1;
+    line-height: 30px;
     text-align: center;
 }

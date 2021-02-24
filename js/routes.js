@@ -1,6 +1,10 @@
-import bookApp from './pages/book-app.cmp.js';
+
 import homePage from './pages/home-page.cmp.js';
-import bookDetails from './pages/book-details.cmp.js';
+import bookApp from './apps/Books/pages/book-app.cmp.js';
+import bookDetails from './apps/Books/pages/book-details.cmp.js';
+
+import keepApp from './apps/keep/pages/keep-app.cmp.js';
+import emailApp from './apps/email/pages/email-app.cmp.js';
 import about from './pages/about.cmp.js';
 
 const aboutTeam = {
@@ -53,6 +57,14 @@ const routes = [
     {
         path: '/book/:bookId',
         component: bookDetails,
+    },
+    {
+        path:'/keep',
+        component:keepApp
+    },
+    {
+        path:'/email',
+        component:emailApp
     },
 ];
 
