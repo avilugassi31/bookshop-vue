@@ -3,7 +3,7 @@ import bookFilter from '../cmps/book-filter.cmp.js';
 import bookList from '../cmps/book-list.cmp.js';
 import bookDetails from './book-details.cmp.js';
 import bookAdd from '../cmps/book-add.cmp.js'
-import { eventBus } from '../services/event-bus-service.js';
+import { eventBus } from '../../../services/event-bus-service.js';
  
 
 export default {
@@ -14,7 +14,6 @@ export default {
             <book-add @addbook="addBook"/> 
             <book-details v-if="selectedBook" :book="selectedBook" @close="selectedBook = null" /> 
             <book-list  @selected="selectBook" @removeBook="removeBook" :books="booksToShow"/> 
-           
         </section>
     `,
     data() {

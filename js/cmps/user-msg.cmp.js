@@ -21,6 +21,7 @@ export default {
     },
     created() {
         eventBus.$on('show-msg', this.setMsg)
+        console.log('eventbus')
     },
     destroyed(){
         eventBus.$off('show-msg', this.setMsg)

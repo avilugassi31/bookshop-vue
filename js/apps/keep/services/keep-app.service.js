@@ -15,22 +15,7 @@ export const keepService = {
 };
 
 var gNotes = [
-    {
-        type: 'NoteTxt',
-        id: utilService.makeId(),
-        isPinned: true,
-        info: {
-            txt: 'Fullstack Me Baby!',
-        },
-    },
-    {
-        type: 'NoteTxt',
-        id: utilService.makeId(),
-        isPinned: true,
-        info: {
-            txt: 'Fullstack Baby!',
-        },
-    },
+
     {
         type: 'NoteImg',
         id: utilService.makeId(),
@@ -38,9 +23,7 @@ var gNotes = [
             url: 'http://coding-academy.org/books-photos/14.jpg',
             title: 'Me playing Mi',
         },
-        style: {
-            backgroundColor: '#00d',
-        },
+        color: '#00d',
     },
     {
         type: 'NoteImg',
@@ -49,9 +32,16 @@ var gNotes = [
             url: 'http://coding-academy.org/books-photos/2.jpg',
             title: 'Me playing Mi',
         },
-        style: {
-            backgroundColor: '#00d',
-        },
+        color: '#00d',
+    },
+    {
+        type: 'NoteTxt',
+        id: utilService.makeId(),
+        color: 'white',
+        info: {
+            isMarked: null,
+            txt: 'Fullstack'
+        }
     },
     {
         type: 'NoteTodos',
@@ -59,18 +49,21 @@ var gNotes = [
             label: 'What To Do:',
             todos: [
                 { txt: 'Do that', doneAt: null, id: utilService.makeId() },
-                { txt: 'Do this', doneAt: 187111111 , id: utilService.makeId()},
+                { txt: 'Do this', doneAt: 187111111, id: utilService.makeId() },
             ],
         },
+        color:'grey',
     },
-    {
-        type: 'NoteVideo',
-        id: utilService.makeId(),
-        info: {
-            url:
-                'https://www.youtube.com/embed/xmeCr9QPhkA?list=RDMMxmeCr9QPhkA',
-        },
-    },
+
+    
+    // {
+    //     type: 'NoteVideo',
+    //     id: utilService.makeId(),
+    //     info: {
+    //         url:
+    //             'https://www.youtube.com/embed/xmeCr9QPhkA?list=RDMMxmeCr9QPhkA',
+    //     },
+    // },
 ];
 
 // function getNotes() {
@@ -85,11 +78,10 @@ function getNotes() {
     return storageService.query(NOTES_KEY).then((notes) => {
         if (!notes || !notes.length) {
             // gNotes.forEach((note) => (note.id = utilService.makeId));
-            // console.log('note:', note);
-            console.log('gnotes:', gNotes);
+            // console.log('note:', note)
             return storageService.postMany(NOTES_KEY, gNotes);
         }
-       
+        console.log('gnotes:service', notes);
         return notes;
     });
 }

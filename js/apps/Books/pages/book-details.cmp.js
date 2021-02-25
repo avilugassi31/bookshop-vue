@@ -1,7 +1,7 @@
 import longText from '../cmps/long-text.cmp.js';
 import bookReview from '../cmps/book-review.cmp.js';
 import { bookService } from '../services/book-service.js';
-import { eventBus } from '../services/event-bus-service.js';
+import { eventBus } from '../../../services/event-bus-service.js';
 
 export default {
     template: ` 

@@ -5,8 +5,6 @@ export default {
     <li v-for="note in noteTodo">{{note.txt}}
         <button @click.stop="removeTodo(note.id)">X</button>
     </li>
-    
-    
     </ul>
 
       
