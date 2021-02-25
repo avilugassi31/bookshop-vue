@@ -43,7 +43,6 @@ p {
     /* height: 120%; */
     width: 100%;
     margin: 0 auto;
-  
 }
 
 /*HOME- HEADER */
@@ -56,8 +55,6 @@ p {
 }
 .logo {
     margin-inline-start: 40px;
-
-   
 }
 nav {
     margin-inline-end: 40px;
@@ -69,7 +66,6 @@ nav {
     height: 100vh;
     justify-content: center;
     align-items: center;
-  
 }
 
 .apsus {
@@ -123,10 +119,9 @@ nav {
 .keep-app {
     height: 100%;
     /* margin-top: 10px; */
-    margin:0 auto;
+    margin: 0 auto;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-
 }
 .notes-txt p {
     font-family: cursive;
@@ -158,8 +153,7 @@ nav {
 .book-filter {
     margin-top: 10px;
     margin-left: 70px;
-    /* background-color: #fff; */
-    margin: 0 auto;
+ 
     height: 100px;
     display: flex;
     justify-content: space-around;
@@ -246,7 +240,7 @@ th {
 td {
     border: 1px solid black;
     text-align: center;
-    table-layout: fixed;
+    /* table-layout: fixed; */
 }
 .table-img {
     width: 50px;
@@ -344,4 +338,59 @@ a {
     column-count: 1;
     line-height: 30px;
     text-align: center;
+}
+
+@media (max-width: 750px) and (min-width: 300px) {
+    .main-apsus {
+        display: flex;
+        flex-direction: column;
+    }
+    .apsus {
+        width: 200px;
+        height: 200px;
+        border: 1px solid black;
+        margin: 0 auto;
+        border-radius: 24px;
+    }
+
+    .apsus.book {
+        margin-top:-50px;
+
+        margin-bottom: 5px;
+    }
+    .apsus.keep {
+        margin-bottom: 5px;
+    }
+    .book-filter{
+        flex-direction:column;
+        justify-content:center;
+        margin-left:120px;
+        
+    }
+    .filter-btn {
+        width: 150px;
+         height: 20px;
+        border-radius: 18px;
+        border: 1px solid black;
+        font-weight: bold; 
+        margin-top:5px;
+    }
+    .modal-details{
+        flex-direction: column;
+        justify-content: center;
+        /* align-items: center; */
+    }
+    table{
+        border:none;
+      
+    }
+    .book-review{
+        margin:10px auto;
+    }
+    .details-btn{
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width:400px;
+    }
 }
