@@ -10,7 +10,17 @@ const aboutTeam = {
     template: `
         <section>
             <h2 class="about-title">Our Team is Amazing!</h2>
-            <p class="about-description">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quos, porro odit minima vitae aspernatur, dolore explicabo eius ut ducimus numquam laborum repudiandae assumenda suscipit non perferendis obcaecati inventore vel est!</p>
+            <p class="about-description">  Avi Lugassi , 31 From Merom-Golan...
+               Talia's Husband , Father Of Geva
+               , For More Projects...
+               <a href="mailto:avilugassi23@gmail.com">Send Email</a><br>
+               I’m oshri yoktan,23 years old. I live in ramle and Im studing at coding academy a FullStack Devaloper Course , For More Projects... 
+               <a href="mailto:Oshriyok1@gmail.com">Send Email</a>
+            </p>
+                  <div class="team-imgs">
+                      <img src="../../img/avi.jpg"/>
+                      <img src="../../img/oshri.png"/>
+</div>
         </section>
     `,
 };

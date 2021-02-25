@@ -50,12 +50,34 @@ p {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    /* margin-bottom: 40px; */
+    margin-bottom: -40px;
     background-color: rgba(179, 83, 39, 0.4);
+    height:110px;
 }
-.logo {
+.logo img {
+    height:50%;
+    width:30%;
     margin-inline-start: 40px;
+    opacity: 1;
+    animation: fade 4s linear;
+    animation-iteration-count: infinite;
+    animation-delay: 2s;
+    background-color:none;
+    background-size: cover;
+    float: left;
+   
 }
+
+@keyframes fade {
+    0%,
+    100% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+}
+
 nav {
     margin-inline-end: 40px;
 }
@@ -81,7 +103,9 @@ nav {
     background-attachment: local;
     background-size: cover;
     background-position: center;
+    /* box-shadow:5px 3px 0 5px rgb(250, 142, 70) */
 }
+
 .apsus.keep {
     background-image: url(../img/keep2.jpg);
     background-repeat: no-repeat;
@@ -118,10 +142,10 @@ nav {
 /* NOTES_TXT */
 .keep-app {
     height: 100%;
-    /* margin-top: 10px; */
-    margin: 0 auto;
+    margin-top: 100px;
+    /* margin: 0 auto; */
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
 }
 .notes-txt p {
     font-family: cursive;
@@ -130,7 +154,12 @@ nav {
     border: 1px solid black;
     text-align: center;
 }
-
+.edit-tools{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
 /* NOTES TODO */
 .notes-todo {
     font-family: cursive;
@@ -153,7 +182,7 @@ nav {
 .book-filter {
     margin-top: 10px;
     margin-left: 70px;
- 
+
     height: 100px;
     display: flex;
     justify-content: space-around;
@@ -204,6 +233,25 @@ nav {
     border: 1px solid rgb(177, 153, 153);
     list-style: none;
     box-shadow: 5px 5px 5px lightgray;
+    animation-name: example;
+    animation-duration: 8s;
+    animation-iteration-count: infinite;
+    animation-delay: 2s;
+}
+
+@keyframes example {
+    0% {
+        background-color: lightgray;
+    }
+    25% {
+        background-color: rgb(146, 146, 97);
+    }
+    50% {
+        background-color: rgb(138, 92, 55);
+    }
+    100% {
+        background-color: rgb(230, 238, 120);
+    }
 }
 img {
     width: 100%;
@@ -338,6 +386,13 @@ a {
     column-count: 1;
     line-height: 30px;
     text-align: center;
+    column-count: 2;
+}
+
+.team-imgs {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 @media (max-width: 750px) and (min-width: 300px) {
@@ -354,43 +409,41 @@ a {
     }
 
     .apsus.book {
-        margin-top:-50px;
+        margin-top: -50px;
 
         margin-bottom: 5px;
     }
     .apsus.keep {
         margin-bottom: 5px;
     }
-    .book-filter{
-        flex-direction:column;
-        justify-content:center;
-        margin-left:120px;
-        
+    .book-filter {
+        flex-direction: column;
+        justify-content: center;
+        margin-left: 120px;
     }
     .filter-btn {
         width: 150px;
-         height: 20px;
+        height: 20px;
         border-radius: 18px;
         border: 1px solid black;
-        font-weight: bold; 
-        margin-top:5px;
+        font-weight: bold;
+        margin-top: 5px;
     }
-    .modal-details{
+    .modal-details {
         flex-direction: column;
         justify-content: center;
         /* align-items: center; */
     }
-    table{
-        border:none;
-      
+    table {
+        border: none;
     }
-    .book-review{
-        margin:10px auto;
+    .book-review {
+        margin: 10px auto;
     }
-    .details-btn{
+    .details-btn {
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        width:400px;
+        width: 400px;
     }
 }
