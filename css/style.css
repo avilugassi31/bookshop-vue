@@ -52,20 +52,19 @@ p {
     align-items: center;
     margin-bottom: -40px;
     background-color: rgba(179, 83, 39, 0.4);
-    height:110px;
+    height: 110px;
 }
 .logo img {
-    height:50%;
-    width:30%;
+    height: 50%;
+    width: 30%;
     margin-inline-start: 40px;
     opacity: 1;
     animation: fade 4s linear;
     animation-iteration-count: infinite;
     animation-delay: 2s;
-    background-color:none;
+    background-color: none;
     background-size: cover;
     float: left;
-   
 }
 
 @keyframes fade {
@@ -80,6 +79,15 @@ p {
 
 nav {
     margin-inline-end: 40px;
+}
+nav a{
+    color:white;
+    font-family: cursive;
+    text-shadow:2px 2px 2px lightgrey;
+}
+nav a:hover{
+    color:rgb(243, 243, 135);
+    text-shadow:2px 2px 2px rgb(85, 85, 85);
 }
 /* HOME-APSUS */
 
@@ -154,8 +162,8 @@ nav {
     border: 1px solid black;
     text-align: center;
 }
-.edit-tools{
-    display:flex;
+.edit-tools {
+    display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -366,6 +374,10 @@ a {
 }
 
 /* ABOUT */
+.about-page {
+    margin-top: 80px;
+
+}
 
 .about-title {
     color: white;
@@ -375,6 +387,7 @@ a {
     text-shadow: 2px 2px 2px lightblue;
     font-size: 2rem;
     text-align: center;
+    /* text-decoration: underline; */
 }
 
 .about-description {
@@ -386,40 +399,57 @@ a {
     column-count: 1;
     line-height: 30px;
     text-align: center;
-    column-count: 2;
 }
 
-.team-imgs {
+.team {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+.team-avi {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.team-avi:first-child {
+  
+    margin-left: 5px;
+    border-right: 2px solid white;
+}
+.team-oshri {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right:5px;
 }
 
 @media (max-width: 750px) and (min-width: 300px) {
     .main-apsus {
         display: flex;
         flex-direction: column;
+        margin:0 auto;
     }
     .apsus {
-        width: 200px;
-        height: 200px;
+        width: 190px;
+        height: 190px;
         border: 1px solid black;
         margin: 0 auto;
         border-radius: 24px;
     }
 
     .apsus.book {
-        margin-top: -50px;
 
         margin-bottom: 5px;
     }
     .apsus.keep {
         margin-bottom: 5px;
     }
+  
     .book-filter {
         flex-direction: column;
         justify-content: center;
         margin-left: 120px;
+        margin-top: 30px;
     }
     .filter-btn {
         width: 150px;
@@ -445,5 +475,29 @@ a {
         justify-content: center;
         align-items: center;
         width: 400px;
+    }
+    .about-btns{
+        display:flex;
+        align-items: center;
+        justify-content: center;
+        margin-left:40px;
+    }
+    .team {
+        flex-direction: column;
+    }
+    .team-avi {
+        flex-direction: column;
+        align-items: flex-end;
+        margin: 0 auto;
+    }
+    .team-oshri {
+        flex-direction: column;
+        align-items: flex-end;
+        margin: 10px auto;
+    }
+    .team-avi:first-child {
+        border-right: none;
+        margin-left: 5px;
+        border-bottom: 2px solid white;
     }
 }
