@@ -3,7 +3,8 @@ export const utilService = {
     loadFromStorage,
     makeId,
     getRandomInt,
-    randomBool
+    randomBool,
+    getRandomColor,
 }
 
 function saveToStorage(key, value) {
@@ -32,4 +33,13 @@ function getRandomInt(min, max) {
 
 function randomBool() {
     return Math.random() < 0.5;
+}
+
+function getRandomColor() {
+    var letters = '0123456789ABCDEF'.split('');
+    var color = '#';
+    for (var i = 0; i < 6; i++) {
+        color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
 }

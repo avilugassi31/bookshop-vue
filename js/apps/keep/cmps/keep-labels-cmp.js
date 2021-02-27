@@ -1,6 +1,6 @@
 
 
-import {eventBus} from '../../../main-services/event-bus-service.js';
+import {eventBus} from '../../../services/event-bus-service.js';
 import keepService from '../services/keep-service.js';
 
 export default {
