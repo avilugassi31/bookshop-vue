@@ -1,6 +1,5 @@
-@import '_mailPage.css';
-@import '_mailToolbar.css';
-@import '_homePage.css';
+@import 'mailPage.css';
+@import 'mailToolbar.css';
 @import 'keep.css';
 @import 'helpers.css';
 
