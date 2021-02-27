@@ -1,5 +1,4 @@
 
-
 import keepService from '../services/keep-service.js';
 import {eventBus} from '../../../services/event-bus-service.js';
 import {utilService} from '../../../services/util.service.js';

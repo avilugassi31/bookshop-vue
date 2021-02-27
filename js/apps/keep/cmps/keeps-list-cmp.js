@@ -7,7 +7,8 @@ import keep from './keep-cmp.js';
 export default {
     template: `
         <section class="keeps-list">
-            <keep class="keep clickable"  v-for="keep in keepsToShow" :keepData="keep"></keep>
+            <keep class="keep clickable"  v-for="keep in keepsToShow" :keepData="keep"></keep> 
+            <!-- Dynamic Componenet -->
         </section>
     `,
 

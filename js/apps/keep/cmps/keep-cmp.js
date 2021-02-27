@@ -37,7 +37,7 @@ export default {
         },
         sendEmail() {
             eventBus.$emit('keep-to-email', keepData);
-        },
+        }, //not working properly
     },
 
     computed: {
@@ -46,7 +46,7 @@ export default {
         },
         getAudioURL() {
             URL.createObjectURL('../audio/New Song Idea');
-        },
+        }, //not working i decide to delete it
     },
 
     components: {

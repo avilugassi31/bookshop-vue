@@ -20,6 +20,7 @@ export default {
             Color: <input type="color" v-model="color">
 
             <labels v-if="currKeep" :keepData="currKeep" @labelsChanged="updateLabels"></labels>
+            <!-- Dynamic component -->
 
             <router-link to="/keep-app/main">
                 <button @click="save">Done</button>
