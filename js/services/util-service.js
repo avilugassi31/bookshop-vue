@@ -1,4 +1,4 @@
-'use strict';
+
 
 function load(key) {
     const json = localStorage.getItem(key);
