@@ -1,6 +1,8 @@
 @import '_mailPage.css';
 @import '_mailToolbar.css';
 @import '_homePage.css';
+@import 'keep.css';
+@import 'helpers.css';
 
 * {
     box-sizing: border-box;
@@ -80,14 +82,14 @@ p {
 nav {
     margin-inline-end: 40px;
 }
-nav a{
-    color:white;
+nav a {
+    color: white;
     font-family: cursive;
-    text-shadow:2px 2px 2px lightgrey;
+    text-shadow: 2px 2px 2px lightgrey;
 }
-nav a:hover{
-    color:rgb(243, 243, 135);
-    text-shadow:2px 2px 2px rgb(85, 85, 85);
+nav a:hover {
+    color: rgb(243, 243, 135);
+    text-shadow: 2px 2px 2px rgb(85, 85, 85);
 }
 /* HOME-APSUS */
 
@@ -137,53 +139,6 @@ nav a:hover{
     background-color: #fff;
 } */
 
-/* KEEP-HEADER */
-
-.keep-header {
-    margin-top: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-/* NOTES */
-/* NOTES_TXT */
-.keep-app {
-    height: 100%;
-    margin-top: 100px;
-    /* margin: 0 auto; */
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-}
-.notes-txt p {
-    font-family: cursive;
-    height: 200px;
-    width: 200px;
-    border: 1px solid black;
-    text-align: center;
-}
-.edit-tools {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-/* NOTES TODO */
-.notes-todo {
-    font-family: cursive;
-    height: 200px;
-    width: 200px;
-    border: 1px solid black;
-    text-align: center;
-}
-/* NOTES IMG */
-/* .notes-img {
-    font-family: cursive;
-    height: 200px;
-    width: 200px;
-    border: 1px solid black;
-    text-align: center;
-} */
 
 /* BOOK FILTER */
 
@@ -376,7 +331,6 @@ a {
 /* ABOUT */
 .about-page {
     margin-top: 80px;
-
 }
 
 .about-title {
@@ -387,7 +341,7 @@ a {
     text-shadow: 2px 2px 2px lightblue;
     font-size: 2rem;
     text-align: center;
-    /* text-decoration: underline; */
+    margin-bottom: 40px;
 }
 
 .about-description {
@@ -412,7 +366,6 @@ a {
     align-items: center;
 }
 .team-avi:first-child {
-  
     margin-left: 5px;
     border-right: 2px solid white;
 }
@@ -420,14 +373,18 @@ a {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-right:5px;
+    margin-right: 5px;
 }
 
 @media (max-width: 750px) and (min-width: 300px) {
+    .app-header {
+        align-items: flex-start;
+    }
+
     .main-apsus {
         display: flex;
         flex-direction: column;
-        margin:0 auto;
+        margin: 0 auto;
     }
     .apsus {
         width: 190px;
@@ -438,13 +395,12 @@ a {
     }
 
     .apsus.book {
-
         margin-bottom: 5px;
     }
     .apsus.keep {
         margin-bottom: 5px;
     }
-  
+
     .book-filter {
         flex-direction: column;
         justify-content: center;
@@ -476,11 +432,11 @@ a {
         align-items: center;
         width: 400px;
     }
-    .about-btns{
-        display:flex;
+    .about-btns {
+        display: flex;
         align-items: center;
         justify-content: center;
-        margin-left:40px;
+        margin-left: 40px;
     }
     .team {
         flex-direction: column;

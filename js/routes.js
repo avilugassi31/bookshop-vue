@@ -1,8 +1,9 @@
 import homePage from './pages/home-page.cmp.js';
 import bookApp from './apps/Books/pages/book-app.cmp.js';
 import bookDetails from './apps/Books/pages/book-details.cmp.js';
-
-import keepApp from './apps/keep/pages/keep-app.cmp.js';
+import keepApp from './apps/keep/pages/keep-app.js';
+import keepEditCmp from './apps/keep/cmps/keep-edit-cmp.js';
+import keepMain from './apps/keep/cmps/keep-main-cmp.js';
 import emailApp from './apps/email/pages/MailPage.js';
 import about from './pages/about.cmp.js';
 
@@ -76,9 +77,20 @@ const routes = [
         component: bookDetails,
     },
     {
-        path: '/keep',
+        path: '/keep-app',
         component: keepApp,
+        children: [
+            {
+                path: 'edit/:id',
+                component: keepEditCmp,
+            },
+            {
+                path: 'main',
+                component: keepMain,
+            },
+        ],
     },
+
     {
         path: '/email',
         component: emailApp,

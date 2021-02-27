@@ -1,3 +1,7 @@
+import { utilService } from './util.service.js';
+import { storageService } from './async-storage-service.js';
+const EMAILS_KEY = 'EMAILS';
+
 const emails = [
     {
         id: 1,
@@ -47,8 +51,13 @@ const emails = [
 ];
 
 function getEmails() {
-    return new Promise((resolve, reject) => {
-        resolve(emails);
+    return storageService.query(EMAILS_KEY).then((storedMails) => {
+        if (!storedMails || !storedMails.length) {
+            storageService.postMany(EMAILS_KEY, emails);
+            return emails;
+        }
+
+        return storedMails;
     });
 }
 
@@ -191,11 +200,13 @@ function saveMail(newMailContent, id) {
 
     if (mailToChangeIdx === -1) emails.push(newMailContent);
     else emails.splice(mailToChangeIdx, 1, newMailContent);
+    utilService.saveToStorage(EMAILS_KEY, emails);
 }
 
 function deleteMail(id) {
     var mailTochangeIdx = emails.findIndex((mail) => mail.id === id);
     emails.splice(mailTochangeIdx, 1);
+    utilService.saveToStorage(EMAILS_KEY, emails);
 }
 
 function showMail(id) {
@@ -223,12 +234,15 @@ function search(searchedValue) {
 }
 
 function addMail(mailContent) {
-    return new Promise((resolve, reject) => {
-        emails.push(mailContent);
-        console.log('sended');
-        resolve(console.log('Email Added!'));
-        reject(console.log('service Failed To Add Email!'));
-    });
+    return storageService.post(EMAILS_KEY, mailContent);
+
+    // return new Promise((resolve, reject) => {
+    //     emails.push(mailContent);
+    //     console.log('sended');
+    //     resolve(console.log('Email Added!'));
+    //     reject(console.log('service Failed To Add Email!'));
+    //     utilService.saveToStorage(EMAILS_KEY, emails);
+    // });
 }
 
 function changeMarked(id) {
