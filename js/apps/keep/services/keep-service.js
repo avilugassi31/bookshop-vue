@@ -1,8 +1,8 @@
 
 
-import {eventBus} from '../../../main-services/event-bus-service.js';
+import {eventBus} from '../../../services/event-bus-service.js';
 import keepStorageService from './keep-storage-service.js';
-import {utilService} from '../../../main-services/util-service.js';
+import {utilService} from '../../../services/util-service.js';
 export default {
     getKeeps,
     addKeep,

@@ -1,6 +1,6 @@
-import keepService from '../sevices/keep-service.js';
-import userMessage from '../../global-cmps/user-msg.cmp.js';
-import { eventBus } from '../../../main-services/event-bus-service.js';
+import keepService from '../services/keep-service.js';
+import userMessage from '../global-cmps/user-msg.cmp.js';
+import { eventBus } from '../../../services/event-bus-service.js';
 
 export default {
     props: ['keepData'],

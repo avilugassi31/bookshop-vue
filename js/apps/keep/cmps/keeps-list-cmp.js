@@ -1,7 +1,7 @@
 
 
-import keepService from '../sevices/keep-service.js';
-import {eventBus} from '../../../main-services/event-bus-service.js';
+import keepService from '../services/keep-service.js';
+import {eventBus} from '../../../services/event-bus-service.js';
 import keep from './keep-cmp.js';
 
 export default {

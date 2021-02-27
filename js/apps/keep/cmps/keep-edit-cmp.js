@@ -1,7 +1,7 @@
 
 
 import labels from './labels-cmp.js';
-import keepService from '../sevices/keep-service.js';
+import keepService from '../services/keep-service.js';
 
 export default {
     name: 'keep-edit-cmp',

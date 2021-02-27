@@ -1,7 +1,7 @@
 
 
 import {eventBus} from '../../../main-services/event-bus-service.js';
-import keepService from '../sevices/keep-service.js';
+import keepService from '../services/keep-service.js';
 
 export default {
     template: `

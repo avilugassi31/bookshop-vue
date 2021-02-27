@@ -98,6 +98,7 @@ nav a:hover {
     height: 100vh;
     justify-content: center;
     align-items: center;
+    
 }
 
 .apsus {
@@ -378,13 +379,13 @@ a {
 
 @media (max-width: 750px) and (min-width: 300px) {
     .app-header {
-        align-items: flex-start;
+        align-items: center;
     }
 
     .main-apsus {
         display: flex;
         flex-direction: column;
-        margin: 0 auto;
+        margin: 10px auto;
     }
     .apsus {
         width: 190px;
@@ -418,6 +419,7 @@ a {
     .modal-details {
         flex-direction: column;
         justify-content: center;
+        margin-top:50px;
         /* align-items: center; */
     }
     table {
@@ -436,7 +438,7 @@ a {
         display: flex;
         align-items: center;
         justify-content: center;
-        margin-left: 40px;
+        /* margin-left: 40px; */
     }
     .team {
         flex-direction: column;

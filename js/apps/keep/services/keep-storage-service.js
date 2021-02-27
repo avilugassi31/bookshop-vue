@@ -70,10 +70,9 @@ const gKeeps = [
         labels: ['personal'],
     },
     {
-        title: 'Bunny Rsbbit',
+        title: 'Codeing Academy , January 2021',
         id: currId++,
-        type: 'video',
-        extra: 'http://clips.vorwaerts-gmbh.de/VfE_html5.mp4',
+        type: 'task',
         color: '#96A90E',
         labels: [],
     },

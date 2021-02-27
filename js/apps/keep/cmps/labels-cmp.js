@@ -1,6 +1,6 @@
 
 
-import keepService from '../sevices/keep-service.js';
+import keepService from '../services/keep-service.js';
 
 export default {
     props: ['keepData'],
